@@ -5,17 +5,11 @@ namespace Mastermind.View
 {
     class ClickEventArgs: EventArgs
     {
-        private MouseState currentMouseState;
-
-        public MouseState CurrentMouseState
-        {
-            get { return currentMouseState; }
-            set { currentMouseState = value; }
-        }
+        public MouseState CurrentMouseState { get; set; }
 
         public ClickEventArgs(MouseState currentMouseState)
         {
-            this.currentMouseState = currentMouseState;
+            CurrentMouseState = currentMouseState;
         }
     }
 }

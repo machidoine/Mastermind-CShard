@@ -9,17 +9,18 @@ namespace Mastermind.App
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class MastermindGame : Microsoft.Xna.Framework.Game
+    public class MastermindGame : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        SpriteManager spriteManager;
-        Sprite arrowRightSprite;
-        Sprite arrowLeftSprite;
+        GraphicsDeviceManager _graphics;
+        SpriteBatch _spriteBatch;
+        SpriteManager _spriteManager;
+        Sprite _arrowRightSprite;
+        Sprite _arrowLeftSprite;
 
         public MastermindGame()
         {
-            graphics = new GraphicsDeviceManager(this);
+            _graphics = new GraphicsDeviceManager(this);
+
 
             MouseManager.Instance.ClickLeftEvent += mouseManager_ClickLeftEvent;
 
@@ -40,7 +41,7 @@ namespace Mastermind.App
         /// </summary>
         protected override void Initialize()
         {
-            spriteManager = new SpriteManager();
+            _spriteManager = new SpriteManager();
             base.Initialize();
         }
 
@@ -51,20 +52,17 @@ namespace Mastermind.App
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Texture2D arrowRight = Content.Load<Texture2D>("arrowRight");
-            Texture2D arrowLeft = Content.Load<Texture2D>("arrowLeft");
+            _arrowRightSprite = new Sprite();
+            _arrowRightSprite.LoadContent(Content, "arrowRight");
+            _arrowRightSprite.Position = Vector2.Zero;
 
-            arrowRightSprite = new Sprite();
-            arrowRightSprite.LoadContent(Content, "arrowRight");
-            arrowRightSprite.Position = Vector2.Zero;
+            _arrowLeftSprite = new Sprite();
+            _arrowLeftSprite.LoadContent(Content, "arrowLeft");
+            _arrowLeftSprite.Position = new Vector2(100, 100);
 
-            arrowLeftSprite = new Sprite();
-            arrowLeftSprite.LoadContent(Content, "arrowLeft");
-            arrowLeftSprite.Position = new Vector2(100, 100);
-
-            arrowRightSprite.MouseClicked += arrowRightSprite_mouseClicked;
+            _arrowRightSprite.MouseClicked += arrowRightSprite_mouseClicked;
 
         }
 
@@ -93,10 +91,10 @@ namespace Mastermind.App
         {
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
+                Exit();
 
             MouseManager.Instance.Update();
-            arrowRightSprite.Position += new Vector2(1, 0);
+            _arrowRightSprite.Position += new Vector2(1, 0);
 
 
 
@@ -112,12 +110,12 @@ namespace Mastermind.App
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
 
-            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
+            _spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
 
-            arrowRightSprite.Draw(spriteBatch);
-            arrowLeftSprite.Draw(spriteBatch);
+            _arrowRightSprite.Draw(_spriteBatch);
+            _arrowLeftSprite.Draw(_spriteBatch);
 
-            spriteBatch.End();
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }

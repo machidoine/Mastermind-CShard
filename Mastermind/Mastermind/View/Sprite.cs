@@ -9,13 +9,13 @@ namespace Mastermind.View
     {
         public event EventHandler<ClickEventArgs> MouseClicked;
 
-        private Texture2D texture2d;
+        private Texture2D _texture2D;
 
-        private Vector2 position;
+        private Vector2 _position;
         public Vector2 Position
         {
-            get { return position; }
-            set { position = value; }
+            get { return _position; }
+            set { _position = value; }
         }
 
         public Sprite()
@@ -25,26 +25,26 @@ namespace Mastermind.View
 
         void Instance_ClickLeftEvent(ClickEventArgs clickEventArgs)
         {
-            if (MouseClicked != null && isOn(clickEventArgs.CurrentMouseState.X, clickEventArgs.CurrentMouseState.Y))
+            if (MouseClicked != null && IsOn(clickEventArgs.CurrentMouseState.X, clickEventArgs.CurrentMouseState.Y))
             {
                 MouseClicked(this, clickEventArgs);
             }
         }
 
-        private bool isOn(int mouseX, int mouseY)
+        private bool IsOn(int mouseX, int mouseY)
         {
-            Rectangle rect = new Rectangle((int)Math.Round(position.X), (int)Math.Round(position.Y), texture2d.Width, texture2d.Height);
+            Rectangle rect = new Rectangle((int)Math.Round(_position.X), (int)Math.Round(_position.Y), _texture2D.Width, _texture2D.Height);
             return rect.Contains(new Point(mouseX, mouseY));
         }
 
         public void LoadContent(ContentManager contentManager, String assetName)
         {
-            texture2d = contentManager.Load<Texture2D>(assetName);
+            _texture2D = contentManager.Load<Texture2D>(assetName);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture2d, position, Color.White);
+            spriteBatch.Draw(_texture2D, _position, Color.White);
         }
 
         

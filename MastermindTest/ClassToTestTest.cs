@@ -1,5 +1,4 @@
 ﻿using Mastermind.View;
-using NUnit.Core;
 using NUnit.Framework;
 
 namespace MastermindTest
