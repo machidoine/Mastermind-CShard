@@ -16,7 +16,7 @@ namespace Mastermind.Framework.Sprite
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
             
             DrawSpriteVisitor drawVisitor = new DrawSpriteVisitor(spriteBatch);
-            sprite.Accept(drawVisitor);
+            sprite.AcceptComposite(drawVisitor);
 
             spriteBatch.End();
         }
@@ -29,7 +29,9 @@ namespace Mastermind.Framework.Sprite
 
         public override void Visit(ISprite sprite)
         {
-            _spriteBatch.Draw(sprite.Texture2D, sprite.Position, Color.White);
+            if (sprite.Texture2D != null && sprite.Position != null) { 
+                _spriteBatch.Draw(sprite.Texture2D, sprite.Position, Color.White);
+            }
         }
     }
 }

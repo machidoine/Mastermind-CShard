@@ -1,4 +1,5 @@
 using System;
+using Mastermind.Framework.Composite;
 using Mastermind.Framework.Input.Mouse;
 using Mastermind.Framework.Sprite;
 using Mastermind.View;
@@ -18,6 +19,8 @@ namespace Mastermind.App
         SpriteManager _spriteManager;
         Sprite _arrowRightSprite;
         Sprite _arrowLeftSprite;
+
+        private ISprite _mainSprite;
 
         public MastermindGame()
         {
@@ -56,6 +59,8 @@ namespace Mastermind.App
             // Create a new SpriteBatch, which can be used to draw textures.
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            _mainSprite = new Sprite();
+
             _arrowRightSprite = new Sprite();
             _arrowRightSprite.LoadContent(Content, "arrowRight");
             _arrowRightSprite.Position = Vector2.Zero;
@@ -63,6 +68,9 @@ namespace Mastermind.App
             _arrowLeftSprite = new Sprite();
             _arrowLeftSprite.LoadContent(Content, "arrowLeft");
             _arrowLeftSprite.Position = new Vector2(100, 100);
+
+            _mainSprite.AddChildren(_arrowLeftSprite);
+            _mainSprite.AddChildren(_arrowRightSprite);
 
             _arrowRightSprite.MouseClicked += arrowRightSprite_mouseClicked;
 
@@ -112,15 +120,9 @@ namespace Mastermind.App
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
 
-            DrawSpriteVisitor.Draw(_arrowRightSprite, _spriteBatch);
-            DrawSpriteVisitor.Draw(_arrowLeftSprite, _spriteBatch);
-
-/*            _spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
-
-            _arrowRightSprite.Draw(_spriteBatch);
-            _arrowLeftSprite.Draw(_spriteBatch);
-
-            _spriteBatch.End();*/
+            //DrawSpriteVisitor.Draw(_arrowRightSprite, _spriteBatch);
+            //DrawSpriteVisitor.Draw(_arrowLeftSprite, _spriteBatch);
+            DrawSpriteVisitor.Draw(_mainSprite, _spriteBatch);
 
             base.Draw(gameTime);
         }

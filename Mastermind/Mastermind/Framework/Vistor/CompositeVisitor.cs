@@ -6,7 +6,8 @@ namespace Mastermind.Framework.Vistor
     {
         public void VisitComposite(IComposite<T> composite)
         {
-            composite.Children.ForEach(child => child.Accept(this));
+            composite.Children.ForEach(child => child.AcceptComposite(this));
+            composite.Accept(this);
         }
 
         public abstract void Visit(T component);

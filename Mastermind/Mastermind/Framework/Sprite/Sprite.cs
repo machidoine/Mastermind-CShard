@@ -43,12 +43,6 @@ namespace Mastermind.Framework.Sprite
             Texture2D = contentManager.Load<Texture2D>(assetName);
         }
 
-
-/*        public void Draw(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(Texture2D, Position, Color.White);
-        }*/
-
         public override void Accept(IVisitor<ISprite> vistor)
         {
             vistor.Visit(this);

@@ -11,6 +11,7 @@ namespace Mastermind.Framework.Composite
 
         List<T> Children { get; }
 
-        void Accept(ICompositeVistor<T> visitor);
+        void AcceptComposite(ICompositeVistor<T> visitor);
+        void Accept(IVisitor<T> visitor);
     }
 }

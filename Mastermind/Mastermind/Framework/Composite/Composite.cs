@@ -23,7 +23,7 @@ namespace Mastermind.Framework.Composite
             Children.Remove(sprite);
         }
 
-        public void Accept(ICompositeVistor<T> visitor)
+        public void AcceptComposite(ICompositeVistor<T> visitor)
         {
             visitor.VisitComposite(this);
         }
