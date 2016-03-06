@@ -74,13 +74,20 @@
   <ItemGroup>
     <Compile Include="App\MastermindGame.cs" />
     <Compile Include="App\Program.cs" />
+    <Compile Include="Framework\Composite\Composite.cs" />
+    <Compile Include="Framework\Composite\IComposite.cs" />
+    <Compile Include="Framework\Sprite\DrawSpriteVisitor.cs" />
+    <Compile Include="Framework\Sprite\ISprite.cs" />
+    <Compile Include="Framework\Vistor\CompositeVisitor.cs" />
+    <Compile Include="Framework\Vistor\ICompositeVistor.cs" />
+    <Compile Include="Framework\Vistor\IVisitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\ClassToTest.cs" />
-    <Compile Include="View\ClickEventArgs.cs" />
-    <Compile Include="View\IMouseEventAware.cs" />
-    <Compile Include="View\MouseManager.cs" />
-    <Compile Include="View\Sprite.cs" />
-    <Compile Include="View\SpriteManager.cs" />
+    <Compile Include="Framework\Input\Mouse\ClickEventArgs.cs" />
+    <Compile Include="Framework\Input\Mouse\IMouseEventAware.cs" />
+    <Compile Include="Framework\Input\Mouse\MouseManager.cs" />
+    <Compile Include="Framework\Sprite\Sprite.cs" />
+    <Compile Include="Framework\Sprite\SpriteManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

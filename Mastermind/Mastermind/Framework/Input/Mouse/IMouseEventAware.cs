@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Mastermind.View
+namespace Mastermind.Framework.Input.Mouse
 {
     interface IMouseEventAware
     {

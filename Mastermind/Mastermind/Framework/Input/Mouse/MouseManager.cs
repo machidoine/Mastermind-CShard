@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Input;
 
-namespace Mastermind.View
+namespace Mastermind.Framework.Input.Mouse
 {
     class MouseManager
     {
@@ -22,14 +22,14 @@ namespace Mastermind.View
 
         private MouseManager()
         {
-            _lastMouseState = Mouse.GetState();
-            _currentMouseState = Mouse.GetState();
+            _lastMouseState = Microsoft.Xna.Framework.Input.Mouse.GetState();
+            _currentMouseState = Microsoft.Xna.Framework.Input.Mouse.GetState();
         }
 
         public void Update()
         {
             _lastMouseState = _currentMouseState;
-            _currentMouseState = Mouse.GetState();
+            _currentMouseState = Microsoft.Xna.Framework.Input.Mouse.GetState();
 
             if (DetectLeftClick())
             {

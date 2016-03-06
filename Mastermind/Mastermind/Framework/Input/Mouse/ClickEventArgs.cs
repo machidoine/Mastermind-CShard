@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Xna.Framework.Input;
 
-namespace Mastermind.View
+namespace Mastermind.Framework.Input.Mouse
 {
     class ClickEventArgs: EventArgs
     {

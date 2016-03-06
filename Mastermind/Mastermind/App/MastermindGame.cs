@@ -1,4 +1,6 @@
 using System;
+using Mastermind.Framework.Input.Mouse;
+using Mastermind.Framework.Sprite;
 using Mastermind.View;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -110,12 +112,15 @@ namespace Mastermind.App
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
 
-            _spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
+            DrawSpriteVisitor.Draw(_arrowRightSprite, _spriteBatch);
+            DrawSpriteVisitor.Draw(_arrowLeftSprite, _spriteBatch);
+
+/*            _spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
 
             _arrowRightSprite.Draw(_spriteBatch);
             _arrowLeftSprite.Draw(_spriteBatch);
 
-            _spriteBatch.End();
+            _spriteBatch.End();*/
 
             base.Draw(gameTime);
         }

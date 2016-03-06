@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
-namespace Mastermind.View
+namespace Mastermind.Framework.Sprite
 {
     class SpriteManager
     {
